@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Avaruus Studios
@@ -34,7 +35,7 @@ public class StreamApiController {
     @Operation(
             summary = "Retrieve list of students whose first name starts with alphabet A",
             description = "1- Find list of students whose first name starts with alphabet A",
-            tags = { "StreamApi", "get" })
+            tags = { "StreamApi" })
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Student.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
@@ -42,6 +43,32 @@ public class StreamApiController {
     @GetMapping("/getAllStudentNameA")
     public List<Student> getAllStudentNameA() {
         return studentService.findFirstNameWithAChar();
+    }
+
+    @Operation(
+            summary = "Group The Student By Department Names",
+            description = "2- Group The Student By Department Names",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Student.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getAllStudentByGroupDepartmentName")
+    public Map<String,List<Student>> getAllStudentByGroupDepartments() {
+        return studentService.groupByDepartName();
+    }
+
+    @Operation(
+            summary = "Find the total count of student using stream",
+            description = "3- Find the total count of student using stream",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getAllStudentsCount")
+    public String getAllStudentsCount() {
+        return studentService.getCountOfStudents();
     }
 
 }

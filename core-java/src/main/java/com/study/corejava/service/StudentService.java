@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -22,6 +24,18 @@ public class StudentService {
     /**
      * Method: 2- Group The Student By Department Names
      */
+    public  Map<String,List<Student>> groupByDepartName() {
+       return  getAllStudents().stream().collect(Collectors.groupingBy(Student::getDepartmantName));
+    }
+
+    /**
+     *Method: 3- Find the total count of student using stream
+     *
+     */
+    public String getCountOfStudents() {
+        return  "Total no of students : "+getAllStudents().stream().count();
+    }
+
 
     public List<Student> getAllStudents() {
         return Arrays.asList(
