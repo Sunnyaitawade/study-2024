@@ -2,8 +2,9 @@
 
 #Topics:
 1.Core Java
-   a) Stream API : http://localhost:8989/swagger-ui/index.html 
-        GET
+   a) Stream API : http://localhost:8989/swagger-ui/index.html
+   
+                GET
 		/api/corejava/streampi/getAllStudentsCount
 		Find the total count of student using stream
 
