@@ -47,10 +47,10 @@ public class OpenAPIConfig {
         License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
         Info info = new Info()
-                .title("Tutorial Management API")
+                .title("Core Java Study API")
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to manage tutorials.").termsOfService("https://www.sunnya.com/terms")
+                .description("This API exposes endpoints to core java tutorials.").termsOfService("https://www.sunnya.com/terms")
                 .license(mitLicense);
 
         return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
