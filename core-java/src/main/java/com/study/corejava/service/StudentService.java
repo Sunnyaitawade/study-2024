@@ -36,6 +36,14 @@ public class StudentService {
         return  "Total no of students : "+getAllStudents().stream().count();
     }
 
+    /**
+     *Method: 4- Find the max age of student
+     *
+     */
+    public String getMaxAgeOfStudents() {
+        return  "The max age of student is: "+getAllStudents().stream().mapToInt(Student::getAge).max().getAsInt();
+    }
+
 
     public List<Student> getAllStudents() {
         return Arrays.asList(

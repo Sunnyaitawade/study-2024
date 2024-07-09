@@ -71,4 +71,17 @@ public class StreamApiController {
         return studentService.getCountOfStudents();
     }
 
+    @Operation(
+            summary = "Find the max age of student",
+            description = "4- Find the max age of student",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getMaxAgeOfStudent")
+    public String getMaxAgeOfStudent() {
+        return studentService.getMaxAgeOfStudents();
+    }
+
 }
