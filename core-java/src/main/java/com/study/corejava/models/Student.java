@@ -1,4 +1,4 @@
-package models;
+package com.study.corejava.models;
 
 public class Student {
 

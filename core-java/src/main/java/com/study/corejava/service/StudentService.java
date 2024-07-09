@@ -1,21 +1,30 @@
-package services;
+package com.study.corejava.service;
 
-import models.Student;
 
-import java.util.ArrayList;
+import com.study.corejava.models.Student;
+import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@Service
 public class StudentService {
 
-    private List<Student> getAllStudent = new ArrayList<>();
+    /**
+     * Method:     1- Find list of students whose first name starts with alphabet A
+     */
+    public List<Student> findFirstNameWithAChar() {
+          return  getAllStudents().stream().filter(student -> {
+            return student.getFirstName().startsWith("A");
+        }).toList();
+    }
 
     /**
-     *
+     * Method: 2- Group The Student By Department Names
      */
-    public StudentService() {
-        this.getAllStudent = Arrays.asList(
+
+    public List<Student> getAllStudents() {
+        return Arrays.asList(
                 new Student(1, "Rohit", "Mall", 30, "Male", "Mechanical Engineering", 2015, "Mumbai", 122),
                 new Student(2, "Pulkit", "Singh", 56, "Male", "Computer Engineering", 2018, "Delhi", 67),
                 new Student(3, "Ankit", "Patil", 25, "Female", "Mechanical Engineering", 2019, "Kerala", 164),
@@ -27,19 +36,5 @@ public class StudentService {
                 new Student(9, "Sonu", "Shankar", 27, "Female", "Computer Engineering", 2018, "Karnataka", 7),
                 new Student(10, "Shubham", "Pandey", 26, "Male", "Instrumentation Engineering", 2017, "Mumbai", 98));
     }
-
-    /**
-     * Method:     1- Find list of students whose first name starts with alphabet A
-     */
-    public void findFirstNameWithAChar() {
-        List<Student> getAllStudentNameA = getAllStudent.stream().filter(student -> {
-            return student.getFirstName().startsWith("A");
-        }).collect(Collectors.toList());
-        getAllStudentNameA.stream().forEach(System.out::println);
-    }
-
-    /**
-     * Method: 2- Group The Student By Department Names
-     */
 
 }
