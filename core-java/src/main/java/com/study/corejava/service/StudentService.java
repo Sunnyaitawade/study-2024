@@ -44,6 +44,48 @@ public class StudentService {
         return  "The max age of student is: "+getAllStudents().stream().mapToInt(Student::getAge).max().getAsInt();
     }
 
+    /**
+     * Method: 5- Find all departments names
+     *
+     */
+    public List<String> getAllDepartmentNames() {
+        return getAllStudents().stream().map(Student::getDepartmantName).toList();
+    }
+
+    /**
+     * Method: 6- Find the count of student in each department
+     *
+     */
+    public Map<String,Long> getCountEachDepartment(){
+        return getAllStudents().stream().collect(Collectors.groupingBy(Student::getDepartmantName,Collectors.counting()));
+    }
+
+    /**
+     * Method: 7- Find the list of students whose age is less than 30
+     *
+     */
+    public List<Student> getListAgeLt() {
+        return getAllStudents().stream().filter(student -> student.getAge()>30).toList();
+    }
+
+    /**
+     * Method: 8- Find the list of students whose rank is in between 50 and 100
+     *
+     */
+    public List<Student> geRankBt() {
+        return getAllStudents().stream().filter(student -> student.getRank() > 30 && student.getRank()<50).toList();
+    }
+
+    /*
+     * Method: 9- Find the average age of male and female students
+     *
+     */
+    public Map<String,Double> geAvgMlFml() {
+        return getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(student -> student.getGender(),Collectors.averagingInt(value -> value.getAge())));
+    }
+
 
     public List<Student> getAllStudents() {
         return Arrays.asList(

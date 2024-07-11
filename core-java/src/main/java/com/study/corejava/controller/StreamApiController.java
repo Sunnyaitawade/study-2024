@@ -84,4 +84,71 @@ public class StreamApiController {
         return studentService.getMaxAgeOfStudents();
     }
 
+    @Operation(
+            summary = "Find all departments names",
+            description = "5- Find all departments names",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getAllDepartmentNames")
+    public List<String> getAllDepartmentNames() {
+        return studentService.getAllDepartmentNames();
+    }
+
+    @Operation(
+            summary = "Find the count of student in each department",
+            description = "6- Find the count of student in each department",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getCountEachDepart")
+    public Map<String,Long> getCountEachDepart() {
+        return studentService.getCountEachDepartment();
+    }
+
+    @Operation(
+            summary = "Find the list of students whose age is less than 30",
+            description = "7- Find the list of students whose age is less than 30",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getCountEachDepart")
+    public List<Student> getListAgeLt() {
+        return studentService.getListAgeLt();
+    }
+
+    @Operation(
+            summary = "Find the list of students whose rank is in between 50 and 100",
+            description = "8- Find the list of students whose rank is in between 50 and 100",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getCountEachDepart")
+    public List<Student> getRankBt() {
+        return studentService.geRankBt();
+    }
+
+    @Operation(
+            summary = "Find the average age of male and female students",
+            description = "9- Find the average age of male and female students",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getCountEachDepart")
+    public  Map<String,Double> getAvgAge() {
+        return studentService.geAvgMlFml();
+
+
+    }
+
 }
