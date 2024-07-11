@@ -157,7 +157,7 @@ public class StreamApiController {
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
-    @GetMapping("/getAvgMlFml")
+    @GetMapping("/getDepartmentByMaxStudent")
     public String getDptmntNmMxStd() {
         return studentService.getDptmntNmMxStd();
     }
