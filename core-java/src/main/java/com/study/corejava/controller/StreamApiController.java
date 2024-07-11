@@ -118,7 +118,7 @@ public class StreamApiController {
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
-    @GetMapping("/getCountEachDepart")
+    @GetMapping("/getStudenAgeLt")
     public List<Student> getListAgeLt() {
         return studentService.getListAgeLt();
     }
@@ -131,7 +131,7 @@ public class StreamApiController {
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
-    @GetMapping("/getCountEachDepart")
+    @GetMapping("/getRankBetween")
     public List<Student> getRankBt() {
         return studentService.geRankBt();
     }
@@ -144,11 +144,21 @@ public class StreamApiController {
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
-    @GetMapping("/getCountEachDepart")
+    @GetMapping("/getAvgMlFml")
     public  Map<String,Double> getAvgAge() {
         return studentService.geAvgMlFml();
-
-
     }
 
+    @Operation(
+            summary = "Find the department who is having maximum number of students",
+            description = "10- Find the department who is having maximum number of students",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getAvgMlFml")
+    public String getDptmntNmMxStd() {
+        return studentService.getDptmntNmMxStd();
+    }
 }

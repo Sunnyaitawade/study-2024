@@ -86,6 +86,18 @@ public class StudentService {
                 .collect(Collectors.groupingBy(student -> student.getGender(),Collectors.averagingInt(value -> value.getAge())));
     }
 
+    /*
+     * 10- Find the department who is having maximum number of students
+     *
+     */
+    public String  getDptmntNmMxStd() {
+        return "Department having maximum number of students : "+ getAllStudents()
+                .stream()
+                .collect(Collectors.groupingBy(Student::getDepartmantName,Collectors.counting()
+                )).entrySet().stream().max(Map.Entry.comparingByValue()).get();
+
+    }
+
 
     public List<Student> getAllStudents() {
         return Arrays.asList(
