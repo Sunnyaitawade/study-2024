@@ -1,21 +1,5 @@
-# study-2024
+
 
 #Topics:
 1.Core Java
-   a) Stream API : http://localhost:8989/swagger-ui/index.html
-   
-                 GET
-		/api/corejava/streampi/getAllStudentsCount
-		Find the total count of student using stream
-
-		GET
-		/api/corejava/streampi/getAllStudentNameA
-		Retrieve list of students whose first name starts with alphabet A
-
-		GET
-		/api/corejava/streampi/getAllStudentByGroupDepartmentName
-		Group The Student By Department Names
-
-		GET
-		/api/corejava/streampi/getMaxAgeOfStudent
-		Find the max age of student
+   ![screencapture-localhost-8989-swagger-ui-index-html-2024-07-12-05_55_50](https://github.com/user-attachments/assets/7d7717f2-154c-4f23-8e1a-a31d0d9ed931)# study-2024
