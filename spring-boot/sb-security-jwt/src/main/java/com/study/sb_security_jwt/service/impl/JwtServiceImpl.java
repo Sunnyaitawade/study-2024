@@ -89,19 +89,21 @@ public class JwtServiceImpl implements JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .signWith(SignatureAlgorithm.HS512, Decoders.BASE64.decode(secretKey))
                 .compact();
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJwt(token).getBody();
+//        return Jwts.parserBuilder()
+//                .setSigningKey(SignatureAlgorithm.HS512)
+//                .build()
+//                .parseClaimsJws(token).getBody();
+
+        return Jwts.parser().setSigningKey(Decoders.BASE64.decode(secretKey)).parseClaimsJws(token).getBody();
     }
 
-    private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
+//    private SecretKey getSignInKey() {
+//        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+//        return Keys.hmacShaKeyFor(keyBytes);
+//    }
 }
