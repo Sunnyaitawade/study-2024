@@ -5,6 +5,7 @@ import com.study.corejava.models.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -98,7 +99,47 @@ public class StudentService {
 
     }
 
+    /*
+     * 11- Find the Students who stays in Delhi and sort them by their names
+     *
+     */
+    public List<Student>  getStdInDelhiSortName() {
+      return getAllStudents().stream().filter(student -> {
+        return  student.getCity().equals("Delhi");
+      }).sorted().toList();
+    }
 
+    /*
+     * 12- Find the average rank in all departments
+     *
+     */
+    public String  getAvgRankInAllDepart() {
+        return " The average rank in all departments: " +getAllStudents().stream().collect(Collectors.groupingBy(Student::getDepartmantName,Collectors.averagingDouble(Student::getRank)));
+    }
+
+    /*
+     * 13- Find the highest rank in each department
+     *
+     */
+    public String  getHighRankInEachDepart() {
+        return " The highest rank in each department: " +getAllStudents().stream().collect(Collectors.groupingBy(Student::getDepartmantName,  Collectors.minBy(Comparator.comparing(Student::getRank))));
+    }
+
+    /*
+     * 14- Find the list of students and sort them by their rank
+     *
+     */
+    public List<Student>  getSortByRank() {
+        return  getAllStudents().stream().sorted(Comparator.comparing(Student::getRank)).toList();
+    }
+
+    /*
+     * 15- Find the student who has second rank
+     *
+     */
+    public String  getStdHasSecondRank() {
+        return  " The student who has second rank: " +getAllStudents().stream().sorted(Comparator.comparing(Student::getRank)).skip(1).limit(1).findFirst().get();
+    }
     public List<Student> getAllStudents() {
         return Arrays.asList(
                 new Student(1, "Rohit", "Mall", 30, "Male", "Mechanical Engineering", 2015, "Mumbai", 122),

@@ -161,4 +161,72 @@ public class StreamApiController {
     public String getDptmntNmMxStd() {
         return studentService.getDptmntNmMxStd();
     }
+
+    @Operation(
+            summary = "Find the Students who stays in Delhi and sort them by their names",
+            description = "11- Find the Students who stays in Delhi and sort them by their names",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getStdInDelhiSortName")
+    public List<Student> getStdInDelhiSortName() {
+        return studentService.getStdInDelhiSortName();
+    }
+
+    @Operation(
+            summary = "Find the average rank in all departments",
+            description = "12- Find the average rank in all departments",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getAvgRankInAllDepart")
+    public String getAvgRankInAllDepart() {
+        return studentService.getAvgRankInAllDepart();
+    }
+
+    @Operation(
+            summary = "Find the highest rank in each department",
+            description = "13- Find the highest rank in each department",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getHighRankInEachDepart")
+    public String getHighRankInEachDepart() {
+        return studentService.getHighRankInEachDepart();
+    }
+
+    @Operation(
+            summary = " Find the list of students and sort them by their rank",
+            description = "14- Find the list of students and sort them by their rank",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getSortByRank")
+    public  List<Student> getSortByRank() {
+        return studentService.getSortByRank();
+    }
+
+
+    @Operation(
+            summary = " Find the student who has second rank",
+            description = "15- Find the student who has second rank",
+            tags = { "StreamApi" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+    @GetMapping("/getStdHasSecondRank")
+    public String getStdHasSecondRank() {
+        return studentService.getStdHasSecondRank();
+    }
+
+
 }
