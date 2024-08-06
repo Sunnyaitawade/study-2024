@@ -1,4 +1,4 @@
-package com.study.corejava.config;
+package com.study.sb_transaction_managment.config;
 
 /**
  * @author Avaruus Studios
